@@ -4,9 +4,27 @@ body {
     text-align: center; 
     margin: 0; 
     font-family: 'Georgia', serif; 
-    overflow: hidden; /* Evita barras de desplazamiento */
+    overflow: hidden; 
 }
 
+/* Corazón que recorta la foto */
+#contenedor-foto {
+    width: 350px; 
+    height: 350px;
+    margin: 50px auto;
+    /* Este es el código que recorta el corazón */
+    clip-path: path('M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z');
+    background-color: #FF0A54; /* Borde del corazón */
+    padding: 8px; /* Grosor del borde */
+}
+
+#foto { 
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover;
+}
+
+/* Lluvia de corazones flotantes */
 #corazones { 
     position: fixed; 
     top: 0; 
@@ -14,40 +32,22 @@ body {
     width: 100%; 
     height: 100%; 
     z-index: -1; 
-    pointer-events: none; /* Para que no estorben al hacer clic */
+    pointer-events: none; 
 }
 
 .corazon { 
     position: absolute; 
     color: #FF0A54; 
-    font-size: 20px; 
+    font-size: 30px; /* Corazones un poco más grandes */
     animation: flotar linear infinite; 
+    opacity: 0.6;
 }
 
 @keyframes flotar { 
-    0% { transform: translateY(100vh) scale(0); opacity: 0; }
-    50% { opacity: 1; }
-    100% { transform: translateY(-10vh) scale(1.5); opacity: 0; } 
+    0% { transform: translateY(100vh) scale(0); }
+    100% { transform: translateY(-10vh) scale(1.5); } 
 }
-
-#foto { 
-    width: 300px; 
-    height: 300px; 
-    border-radius: 50%; 
-    border: 5px solid #FF0A54; 
-    margin-top: 50px; 
-    object-fit: cover; 
-}
-
-#titulo { margin-top: 50px; color: #FFD6FF; }
 
 #btn-reproducir { 
-    background: #FF0A54; 
-    color: white; 
-    border: none; 
-    padding: 15px 30px; 
-    border-radius: 20px; 
-    cursor: pointer; 
-    font-size: 16px; 
-    margin-top: 20px; 
+    background: #FF0A54; color: white; border: none; padding: 15px 30px; border-radius: 20px; cursor: pointer; font-size: 18px; 
 }
