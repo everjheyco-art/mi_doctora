@@ -1,4 +1,4 @@
-/* --- Base Styles (Must include Viewport!) --- */
+/* --- Configuración General --- */
 body { 
     background-color: #050005; 
     color: white; 
@@ -8,48 +8,30 @@ body {
     overflow: hidden; 
 }
 
-/* --- The Container (Forces Heart Shape and Border) --- */
+/* --- Contenedor de la Foto (Corazón Perfecto) --- */
 #contenedor-foto {
-    display: block; /* Important */
-    width: 300px; 
-    height: 300px; 
-    margin: 50px auto; /* Centering */
-    background-color: #FF0A54; /* Border Color */
-    padding: 10px; /* Border Thickness */
-    
-    /* Perfect Heart Shape */
-    clip-path: path('M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z');
-    
-    /* Neon Glow */
-    box-shadow: 0 0 20px #ff0055, 0 0 40px #ff0055;
-    
-    /* Ensure nothing spills out */
-    overflow: hidden; 
+    width: 300px;
+    height: 300px;
+    margin: 50px auto;
+    background-color: #FF0A54;
+    padding: 8px;
+    /* Comentamos el clip-path temporalmente para verificar si la foto sale */
+    /* clip-path: path('...'); */ 
+    border-radius: 50%; /* Prueba esto primero para ver si es el clip-path */
+    overflow: hidden;
+    display: block;
 }
 
-/* --- The Image (Scales to fit the Heart perfectly) --- */
-#foto { 
-    width: 100%; 
-    height: 100%; 
-    object-fit: cover; /* Important: Prevents stretching */
-    display: block; /* Important */
-    border-radius: 50%; /* Smooths the edges slightly */
-    
-    /* Ensure the image ITSELF is also clipped to prevent overlap issues */
-    clip-path: path('M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z');
+#foto {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block; /* Importante para que la imagen ocupe su espacio */
 }
 
-/* --- Floating Background Hearts --- */
-#corazones { 
-    position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; 
-}
-
-.corazon { 
-    position: absolute; 
-    font-size: 30px; 
-    animation: flotar 8s linear infinite, brillar 2s infinite alternate; 
-    color: #FF0A54;
-}
+/* --- Corazones de Fondo (Flotantes) --- */
+#corazones { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; }
+.corazon { position: absolute; font-size: 30px; animation: flotar 8s linear infinite; color: #FF0A54; }
 
 @keyframes flotar { 
     0% { transform: translateY(100vh); opacity: 0; } 
@@ -57,12 +39,7 @@ body {
     100% { transform: translateY(-10vh); opacity: 0; } 
 }
 
-@keyframes brillar { 
-    from { transform: scale(1); filter: brightness(1); } 
-    to { transform: scale(1.2); filter: brightness(1.5); } 
-}
-
-/* --- Start Button --- */
+/* --- Botón --- */
 #btn-reproducir { 
     background: #ff0055; color: white; border: none; padding: 15px 30px; 
     border-radius: 20px; cursor: pointer; font-size: 18px; margin-top: 20px; 
