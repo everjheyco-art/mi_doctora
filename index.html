@@ -7,7 +7,6 @@
 </head>
 <body>
     <div id="corazones"></div>
-    
     <h1 id="titulo">Para mi Doctora Favorita ❤️</h1>
     
     <div id="contenedor-foto">
@@ -22,35 +21,6 @@
 
     <button id="btn-reproducir" onclick="iniciarExperiencia()">Toca aquí para empezar</button>
 
-    <script>
-        // 1. Esto crea los corazones al cargar la página (NO al presionar el botón)
-        const contenedor = document.getElementById('corazones');
-        for(let i=0; i<20; i++) {
-            let c = document.createElement('div');
-            c.innerHTML = '❤️';
-            c.className = 'corazon'; // Asegúrate de tener esto en tu style.css
-            c.style.left = Math.random()*100 + '%';
-            c.style.top = Math.random()*100 + '%';
-            c.style.animationDelay = Math.random() * 3 + 's';
-            contenedor.appendChild(c);
-        }
-
-        // 2. Esto se ejecuta al presionar el botón
-        function iniciarExperiencia() {
-            var audio = document.getElementById("audioMusica");
-            audio.play();
-
-            const fotos = ["foto1.jpg", "foto2.jpg", "foto3.jpg", "foto4.jpg", "foto5.jpg", "foto6.jpg", "foto7.jpg", "foto8.jpg", "foto9.jpg"];
-            let indice = 0;
-            const imgElement = document.getElementById('foto');
-            
-            setInterval(() => {
-                indice = (indice + 1) % fotos.length;
-                imgElement.src = fotos[indice];
-            }, 3000);
-
-            document.getElementById('btn-reproducir').style.display = 'none';
-        }
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
