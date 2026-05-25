@@ -19,14 +19,26 @@
         <source src="musica.mp3" type="audio/mpeg">
     </audio>
 
-    <button id="btn-reproducir" onclick="reproducir()">Toca aquí para empezar</button>
+    <button id="btn-reproducir" onclick="iniciarExperiencia()">Toca aquí para empezar</button>
 
     <script>
-        function reproducir() {
+        function iniciarExperiencia() {
+            // 1. Reproducir música
             var audio = document.getElementById("audioMusica");
-            audio.play().catch(function(error) {
-                console.log("Error al reproducir: " + error);
-            });
+            audio.play();
+
+            // 2. Iniciar cambio de fotos (cada 3 segundos)
+            const fotos = ["foto1.jpg", "foto2.jpg", "foto3.jpg", "foto4.jpg", "foto5.jpg", "foto6.jpg", "foto7.jpg", "foto8.jpg", "foto9.jpg"];
+            let indice = 0;
+            const imgElement = document.getElementById('foto');
+            
+            setInterval(() => {
+                indice = (indice + 1) % fotos.length;
+                imgElement.src = fotos[indice];
+            }, 3000);
+
+            // 3. Ocultar el botón para que no estorbe
+            document.getElementById('btn-reproducir').style.display = 'none';
         }
     </script>
 </body>
