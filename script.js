@@ -1,71 +1,30 @@
-const fotos = [
-    "foto1.jpg",
-    "foto2.jpg",
-    "foto3.jpg",
-    "foto4.jpg",
-    "foto5.jpg",
-    "foto6.jpg",
-    "foto7.jpg",
-    "foto8.jpg",
-    "foto9.jpg"
-];
-
-const slider = document.getElementById("slider");
-const musica = document.getElementById("musica");
-const boton = document.getElementById("btnInicio");
-const container = document.getElementById("hearts-container");
-
-let i = 0;
-let iniciado = false;
-
-// Botón iniciar
-
-boton.addEventListener("click", ()=>{
-
-    if(iniciado) return;
-
-    iniciado = true;
-
-    musica.play();
-
-    setInterval(()=>{
-
-        i++;
-
-        if(i >= fotos.length){
-            i = 0;
-        }
-
-        slider.style.opacity = 0;
-
-        setTimeout(()=>{
-            slider.src = fotos[i];
-            slider.style.opacity = 1;
-        },500);
-
-    },3000);
-
-});
-
-
-/* Corazones flotantes */
-
-function crearCorazon(){
-
-    const heart = document.createElement("div");
-    heart.className = "heart";
-    heart.innerHTML = "❤";
-
-    heart.style.left = Math.random()*100+"vw";
-    heart.style.fontSize = (20+Math.random()*35)+"px";
-    heart.style.animationDuration =
-    (4+Math.random()*5)+"s";
-
-    container.appendChild(heart);
-
-    setTimeout(()=>{
-        heart.remove();
-    },9000);
+function iniciarExperiencia() {
+    // 1. Iniciar música
+    const audio = document.getElementById("audioMusica");
+    audio.play().catch(e => console.log("Error al reproducir audio:", e));
+    
+    // 2. Ocultar botón
+    document.getElementById('btn-reproducir').style.display = 'none';
+    
+    // 3. Iniciar carrusel de imágenes
+    const fotos = ["foto1.jpg", "foto2.jpg", "foto3.jpg", "foto4.jpg", "foto5.jpg", "foto6.jpg", "foto7.jpg", "foto8.jpg", "foto9.jpg"];
+    let i = 0;
+    const img = document.getElementById('foto');
+    
+    setInterval(() => {
+        i = (i + 1) % fotos.length;
+        img.src = fotos[i];
+    }, 3000); // 3000 milisegundos = 3 segundos
 }
 
-setInterval(crearCorazon,300);azon,300);
+// Generar corazones al cargar la página
+const contenedor = document.getElementById('corazones');
+for(let i = 0; i < 30; i++) { 
+    let c = document.createElement('div');
+    c.innerHTML = '❤️';
+    c.className = 'corazon';
+    c.style.left = Math.random() * 100 + '%';
+    c.style.animationDuration = (Math.random() * 5 + 5) + 's'; 
+    c.style.animationDelay = Math.random() * 5 + 's';
+    contenedor.appendChild(c);
+}
