@@ -3,31 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Para Mi Amor ❤️</title>
+    <title>La Mejor Doctora ❤️</title>
     <link rel="stylesheet" href="estilo.css">
 </head>
 <body>
 
-    <!-- Música -->
-    <audio autoplay loop>
-        <source src="musica.mp3" type="audio/mp3">
-    </audio>
+<!-- Música -->
+<audio id="musica" loop>
+    <source src="musica.mp3" type="audio/mp3">
+</audio>
 
-    <!-- Corazones flotantes -->
-    <div id="hearts-container"></div>
+<!-- Corazones flotantes -->
+<div id="hearts-container"></div>
+
+<!-- Contenido -->
+<div class="contenedor">
 
     <!-- Corazón principal -->
-    <div class="center">
+    <div class="heart-frame">
 
-        <div class="heart-frame">
-
-            <div class="heart-photo">
-                <img id="slider" src="foto1.jpg">
-            </div>
-
+        <div class="heart-photo">
+            <img id="slider" src="foto1.jpg">
         </div>
 
     </div>
+
+    <!-- Botón -->
+    <button id="btnInicio">
+        💖 La Mejor Doctora 💖
+    </button>
+
+</div>
 
 <script src="script.js"></script>
 </body>
