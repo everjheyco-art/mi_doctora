@@ -1,12 +1,13 @@
-const colores = ['#ff0055', '#990099', '#ff3366', '#800080'];
 const contenedor = document.getElementById('corazones');
+const colores = ['#ff0055', '#990099', '#ff3366'];
 
-for(let i = 0; i < 30; i++) {
+// Crear corazones grandes y brillantes
+for(let i = 0; i < 20; i++) {
     let c = document.createElement('div');
     c.innerHTML = '❤️';
     c.className = 'corazon';
-    c.style.left = Math.random() * 100 + '%';
-    c.style.top = Math.random() * 100 + '%';
+    c.style.left = Math.random() * 90 + '%';
+    c.style.top = Math.random() * 90 + '%';
     c.style.color = colores[Math.floor(Math.random() * colores.length)];
     contenedor.appendChild(c);
 }
