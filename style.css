@@ -1,58 +1,124 @@
-/* --- Configuración General --- */
-body { 
-    background-color: #050005; 
-    color: white; 
-    text-align: center; 
-    margin: 0; 
-    font-family: 'Georgia', serif; 
-    overflow: hidden; 
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
-/* --- Contenedor de la Foto (Corazón Perfecto) --- */
-#contenedor-foto {
-    width: 300px; 
-    height: 300px; 
-    margin: 50px auto;
-    background-color: #FF0A54;
-    padding: 8px; /* Grosor del borde */
-    /* Forma de corazón precisa */
-    clip-path: path('M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z');
-    box-shadow: 0 0 20px #ff0055, 0 0 40px #ff0055; /* Brillo neón */
+body{
+    overflow:hidden;
+    height:100vh;
+    background:black;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    position:relative;
+    font-family:Arial;
 }
 
-#foto { 
-    width: 100%; 
-    height: 100%; 
-    object-fit: cover;
-    clip-path: path('M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z');
+/* Fondo romántico */
+
+body::before{
+    content:"";
+    position:absolute;
+    width:100%;
+    height:100%;
+    background:
+    radial-gradient(circle at top, rgba(255,0,80,.25), transparent 40%);
+    animation:fondo 6s infinite alternate;
 }
 
-/* --- Corazones de Fondo (Flotantes y Brillantes) --- */
-#corazones { 
-    position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; 
+@keyframes fondo{
+    from{
+        transform:scale(1);
+    }
+    to{
+        transform:scale(1.1);
+    }
 }
 
-.corazon { 
-    position: absolute; 
-    font-size: 30px; 
-    animation: flotar 8s linear infinite, brillar 2s infinite alternate; 
-    color: #FF0A54;
+/* Centro */
+
+.center{
+    position:relative;
+    z-index:10;
 }
 
-@keyframes flotar { 
-    0% { transform: translateY(100vh); opacity: 0; } 
-    50% { opacity: 0.8; }
-    100% { transform: translateY(-10vh); opacity: 0; } 
+/* Corazón grande */
+
+.heart-frame{
+    position:relative;
+    width:420px;
+    height:380px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
 }
 
-@keyframes brillar { 
-    from { transform: scale(1); filter: brightness(1); } 
-    to { transform: scale(1.2); filter: brightness(1.5); } 
+/* Corazón neón */
+
+.heart-frame::before{
+    content:"";
+    position:absolute;
+    width:420px;
+    height:380px;
+    background:#ff0055;
+    clip-path:path("M210 350 C40 220 0 100 110 40 C180 0 210 70 210 70 C210 70 240 0 310 40 C420 100 380 220 210 350");
+    box-shadow:
+    0 0 25px #ff0055,
+    0 0 60px #ff0055,
+    0 0 100px #ff0055;
+    animation:pulse 2s infinite;
 }
 
-/* --- Estilo del Botón --- */
-#btn-reproducir { 
-    background: #ff0055; color: white; border: none; padding: 15px 30px; 
-    border-radius: 20px; cursor: pointer; font-size: 18px; margin-top: 20px;
-    box-shadow: 0 0 10px #ff0055;
+/* Foto */
+
+.heart-photo{
+    position:absolute;
+    width:260px;
+    height:260px;
+    overflow:hidden;
+    clip-path:path("M130 230 C20 150 0 80 65 35 C105 5 130 50 130 50 C130 50 155 5 195 35 C260 80 240 150 130 230");
+    border:5px solid #ff77aa;
+    box-shadow:
+    0 0 20px #ff77aa,
+    0 0 50px #ff77aa;
+    z-index:2;
+}
+
+.heart-photo img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+/* Latido */
+
+@keyframes pulse{
+    0%{
+        transform:scale(1);
+    }
+    50%{
+        transform:scale(1.05);
+    }
+    100%{
+        transform:scale(1);
+    }
+}
+
+/* Corazones flotantes */
+
+.heart{
+    position:absolute;
+    color:#ff0077;
+    animation:float linear infinite;
+    opacity:.8;
+}
+
+@keyframes float{
+    from{
+        transform:translateY(100vh) scale(.5);
+    }
+    to{
+        transform:translateY(-120vh) scale(1.2);
+    }
 }
