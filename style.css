@@ -1,151 +1,16 @@
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+body { background-color: #050005; color: white; text-align: center; margin: 0; font-family: 'Georgia', serif; overflow: hidden; }
+
+#contenedor-foto {
+    width: 300px; height: 300px; margin: 50px auto;
+    background-color: #FF0A54; padding: 8px;
+    clip-path: path('M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z');
+    box-shadow: 0 0 20px #ff0055;
+    overflow: hidden;
 }
+#foto { width: 100%; height: 100%; object-fit: cover; }
 
-body{
-    height:100vh;
-    overflow:hidden;
-    background:black;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    position:relative;
-    font-family:Arial;
-}
+#corazones { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; }
+.corazon { position: absolute; font-size: 30px; animation: flotar 8s linear infinite; color: #FF0A54; }
+@keyframes flotar { 0% { transform: translateY(100vh); opacity: 0; } 50% { opacity: 0.8; } 100% { transform: translateY(-10vh); opacity: 0; } }
 
-/* Fondo */
-
-body::before{
-    content:"";
-    position:absolute;
-    width:100%;
-    height:100%;
-    background:
-    radial-gradient(circle, rgba(255,0,100,.2), black 70%);
-}
-
-/* Contenedor */
-
-.contenedor{
-    position:relative;
-    z-index:10;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    gap:30px;
-}
-
-/* Corazón */
-
-.heart-frame{
-    position:relative;
-    width:430px;
-    height:390px;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-}
-
-/* Corazón neón */
-
-.heart-frame::before{
-    content:"";
-    position:absolute;
-    width:430px;
-    height:390px;
-    background:#ff0055;
-
-    clip-path:path("M215 350 C50 220 0 110 115 40 C180 0 215 75 215 75 C215 75 250 0 315 40 C430 110 380 220 215 350");
-
-    box-shadow:
-    0 0 30px #ff0066,
-    0 0 60px #ff0066,
-    0 0 120px #ff0066;
-
-    animation:latido 2s infinite;
-}
-
-/* Foto centro */
-
-.heart-photo{
-    position:absolute;
-    width:270px;
-    height:270px;
-    overflow:hidden;
-
-    clip-path:path("M135 240 C30 160 0 80 70 35 C110 5 135 50 135 50 C135 50 160 5 200 35 C270 80 240 160 135 240");
-
-    border:5px solid #ff88bb;
-
-    box-shadow:
-    0 0 20px #ff88bb,
-    0 0 40px #ff88bb;
-
-    z-index:2;
-}
-
-.heart-photo img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
-    transition:1s;
-}
-
-/* Botón */
-
-#btnInicio{
-    padding:16px 35px;
-    border:none;
-    border-radius:40px;
-    font-size:22px;
-    cursor:pointer;
-    color:white;
-    background:#ff0066;
-
-    box-shadow:
-    0 0 15px #ff0066,
-    0 0 35px #ff0066;
-
-    animation:brillo 1.8s infinite;
-}
-
-#btnInicio:hover{
-    transform:scale(1.08);
-}
-
-/* Corazones flotantes */
-
-.heart{
-    position:absolute;
-    color:#ff0066;
-    animation:subir linear infinite;
-}
-
-@keyframes subir{
-    from{
-        transform:translateY(100vh);
-    }
-    to{
-        transform:translateY(-120vh);
-    }
-}
-
-@keyframes latido{
-    0%{transform:scale(1);}
-    50%{transform:scale(1.05);}
-    100%{transform:scale(1);}
-}
-
-@keyframes brillo{
-    0%{
-        box-shadow:0 0 15px #ff0066;
-    }
-    50%{
-        box-shadow:0 0 40px #ff3399;
-    }
-    100%{
-        box-shadow:0 0 15px #ff0066;
-    }
-}
+#btn-reproducir { background: #ff0055; color: white; border: none; padding: 15px 30px; border-radius: 20px; cursor: pointer; font-size: 18px; }
