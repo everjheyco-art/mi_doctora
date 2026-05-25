@@ -24,7 +24,9 @@
     <script>
         function reproducir() {
             var audio = document.getElementById("audioMusica");
-            audio.play();
+            audio.play().catch(function(error) {
+                console.log("Error al reproducir: " + error);
+            });
         }
     </script>
 </body>
