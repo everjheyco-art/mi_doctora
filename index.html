@@ -3,20 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Para mi Doctora Favorita</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Para Mi Amor ❤️</title>
+    <link rel="stylesheet" href="estilo.css">
 </head>
 <body>
-    <div id="corazones"></div>
-    <h1>Para mi Doctora Favorita ❤️</h1>
-    
-    <div class="contenedor-foto">
-        <img id="foto" src="foto1.jpg" alt="Foto de mi doctora">
-    </div>
-    
-    <button id="btn-reproducir" onclick="iniciarExperiencia()">Toca aquí para empezar</button>
-    <audio id="audioMusica" src="musica.mp3" loop></audio>
 
-    <script src="script.js"></script>
+    <!-- Música -->
+    <audio autoplay loop>
+        <source src="musica.mp3" type="audio/mp3">
+    </audio>
+
+    <!-- Corazones flotantes -->
+    <div id="hearts-container"></div>
+
+    <!-- Corazón principal -->
+    <div class="center">
+
+        <div class="heart-frame">
+
+            <div class="heart-photo">
+                <img id="slider" src="foto1.jpg">
+            </div>
+
+        </div>
+
+    </div>
+
+<script src="script.js"></script>
 </body>
 </html>
